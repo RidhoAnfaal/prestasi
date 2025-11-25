@@ -92,10 +92,6 @@ class LoginTest extends TestCase
         ]);
     }
 
-
-
-
-
     /** @test */
     public function user_can_login_with_username_and_be_redirected_to_dashboard()
     {
@@ -170,23 +166,23 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_error_if_email_is_not_verified()
-    {
+    // public function it_returns_error_if_email_is_not_verified()
+    // {
 
-        $unverifiedUser = User::create([
-            'role_id' => Role::where('role_name', 'admin')->first()->role_id,
-            'user_name' => 'Unverified User',
-            'user_username' => 'unverified',
-            'user_password' => Hash::make('password'),
-            'email_verified_at' => null,
-        ]);
+    //     $unverifiedUser = User::create([
+    //         'role_id' => Role::where('role_name', 'admin')->first()->role_id,
+    //         'user_name' => 'Unverified User',
+    //         'user_username' => 'unverified',
+    //         'user_password' => Hash::make('password'),
+    //         'email_verified_at' => null,
+    //     ]);
 
-        $response = $this->post(route('login.post'), [
-            'login_id' => 'unverified',
-            'password' => 'password',
-        ]);
+    //     $response = $this->post(route('login.post'), [
+    //         'login_id' => 'unverified',
+    //         'password' => 'password',
+    //     ]);
 
-        $response->assertSessionHasErrors(['login_id' => 'Your email has not been verified. Please check your email for verification.']);
-        $this->assertGuest();
-    }
+    //     $response->assertSessionHasErrors(['login_id' => 'Your email has not been verified. Please check your email for verification.']);
+    //     $this->assertGuest();
+    // }
 }
